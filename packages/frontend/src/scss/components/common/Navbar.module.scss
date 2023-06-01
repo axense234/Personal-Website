@@ -1,0 +1,34 @@
+@use "../../abstracts" as *;
+
+.navContainer {
+  @include flexCenter(row);
+  justify-content: space-between;
+  padding: 1rem 4rem;
+  margin-bottom: auto;
+
+  width: 100%;
+  height: 5rem;
+  background-color: getColor("main-purple");
+
+  box-shadow: 1px 1px 8px 2px black;
+
+  #{&}__navMenu {
+    @include flexCenter(row);
+    background-color: inherit;
+    border: none;
+
+    &:hover {
+      transform: scale(1.05) rotate(90deg);
+    }
+  }
+
+  #{&}__navLogo {
+    @include flexCenter(row);
+    gap: 1rem;
+
+    h2 {
+      font-size: 1.25rem;
+      letter-spacing: 2px;
+    }
+  }
+}

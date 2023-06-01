@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Kanit", sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+button {
+  transition: transform 0.1s ease-in;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-50rem);
+  pointer-events: none;
+
+  transition: all 1s;
+}
+
+.showHorizontal {
+  opacity: 1;
+  transform: translateX(0%);
+  filter: blur(0);
+
+  transition: all 1s;
+}

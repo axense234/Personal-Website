@@ -1,0 +1,19 @@
+@use "../../abstracts" as *;
+
+.logoContainer {
+  @include flexCenter(row);
+  text-decoration: none;
+  transition: transform 0.1s linear;
+
+  a {
+    @include flexCenter(row);
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.25);
+  }
+}

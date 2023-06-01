@@ -1,0 +1,126 @@
+@use "../../abstracts" as *;
+
+@keyframes popLeftRight {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0%);
+    transform: translateX(0%);
+  }
+}
+
+.homeContainer {
+  @include flexCenter(column);
+  width: 100%;
+  min-height: 50rem;
+
+  #{&}__intro {
+    @include flexCenter(row);
+    width: 80%;
+    height: 100%;
+    min-height: 50rem;
+    justify-content: space-between;
+    padding: 1rem 4rem;
+  }
+
+  #{&}__introTitle {
+    @include flexCenter(column);
+    align-items: flex-start;
+    color: getColor("main-purple");
+    gap: 7.5rem;
+
+    h1 {
+      font-size: 5rem;
+      letter-spacing: 10px;
+
+      span {
+        font-size: 8rem;
+        letter-spacing: 2rem;
+        transition: all 0.5s ease-in;
+
+        animation: popLeftRight 1.35s alternate 1;
+
+        @for $i from 1 through 6 {
+          &:nth-of-type(#{$i}) {
+            animation-delay: $baseHomeIntroNameAnimationDelay * $i;
+          }
+        }
+      }
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+  }
+
+  #{&}__introTitleName {
+    @include flexCenter(row);
+  }
+
+  #{&}__about {
+    @include flexCenter(column);
+    width: 80%;
+    min-height: 50rem;
+    justify-content: space-between;
+    padding: 7.5rem 4rem;
+    gap: 5rem;
+
+    h2 {
+      font-size: 8rem;
+      letter-spacing: 5px;
+      color: getColor("main-purple");
+    }
+  }
+
+  #{&}__aboutContent {
+    @include flexCenter(row);
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 3rem;
+
+    p {
+      color: getColor("main-silver");
+      font-size: 1.5rem;
+      letter-spacing: 1.25px;
+      width: 50%;
+    }
+  }
+
+  #{&}__aboutContentLogos {
+    @include flexCenter(row);
+    width: 40%;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+
+    li {
+      @include flexCenter(row);
+      width: 50%;
+
+      @for $i from 1 through $aboutHomeLogosCount {
+        &:nth-of-type(#{$i}) {
+          transition-delay: $baseAboutHomeLogoAnimationDelay * $i * 2;
+        }
+      }
+
+      &:hover {
+        transition: 0.1s ease-in-out;
+        transform: scale(1.1);
+      }
+
+      a {
+        text-decoration: none;
+
+        img {
+          border-radius: 50%;
+          border: 3px solid getColor("main-gold");
+        }
+      }
+    }
+  }
+}
